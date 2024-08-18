@@ -1,5 +1,7 @@
 name: Gradle CI Build
-
+on:
+  workflow_dispatch:
+  
 jobs:
   build:
     name: Gradle Build
