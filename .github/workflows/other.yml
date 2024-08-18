@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted  # Especifica que o job deve rodar no runner self-hosted
+    runs-on: ubuntu-latest  # Utiliza o runner padrão do GitHub
 
     steps:
       - name: Checkout code
@@ -24,15 +24,4 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            gradle-${{ runner.os }}-
-
-      - name: Verify Gradle version
-        run: ./gradlew --version
-
-      - name: Build with Gradle
-        run: ./gradlew build
-
-      - name: Run tests with Gradle
-        run: ./gradlew test
+          key: gradle-${{ runner.os }}-${{
